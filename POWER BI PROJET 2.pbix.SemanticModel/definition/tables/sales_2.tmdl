@@ -1,0 +1,135 @@
+table sales_2
+	lineageTag: 653541ca-c22d-4e99-b09f-df10c2ae07d8
+
+	column 'ID Commande'
+		dataType: string
+		lineageTag: d7e9545e-443c-4f73-ae61-3fda75d2f6bf
+		summarizeBy: none
+		sourceColumn: ID Commande
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID Client'
+		dataType: string
+		lineageTag: 770bb379-8bf4-4b43-b075-2f43407510c4
+		summarizeBy: none
+		sourceColumn: ID Client
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nom Client'
+		dataType: string
+		lineageTag: ecb154cc-13a9-4225-ac3c-9f24a18f5b56
+		summarizeBy: none
+		sourceColumn: Nom Client
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID Produit'
+		dataType: string
+		lineageTag: d75c996c-7fa3-481f-908e-f8e9424b7194
+		summarizeBy: none
+		sourceColumn: ID Produit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nom produit'
+		dataType: string
+		lineageTag: bd9a9893-de5e-4aaf-ab56-c25951b6f929
+		summarizeBy: none
+		sourceColumn: Nom produit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categorie
+		dataType: string
+		lineageTag: fbdc9ce6-4327-405d-a826-cb663fa39156
+		summarizeBy: none
+		sourceColumn: Categorie
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID Region'
+		dataType: string
+		lineageTag: 1a2e23e5-f6e5-40d4-a5ed-437d7aabe52a
+		summarizeBy: none
+		sourceColumn: ID Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nom de la région'
+		dataType: string
+		lineageTag: 380cd5ec-a7b6-4c3b-8d42-0f1c1bb3c888
+		summarizeBy: none
+		sourceColumn: Nom de la région
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date de la Commnade'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f81d3b5e-8e70-4898-9578-56902442a96e
+		summarizeBy: none
+		sourceColumn: Date de la Commnade
+
+		variation Variation
+			isDefault
+			relationship: 29ea52b7-bb8c-42d2-9cfc-cf0d761a2461
+			defaultHierarchy: LocalDateTable_fff29c86-8ab7-4c9c-b678-aa6c11eb6417.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Quantitées
+		dataType: int64
+		formatString: 0
+		lineageTag: 543c0c3f-8b47-46d1-be9c-aee2ef907bb2
+		summarizeBy: sum
+		sourceColumn: Quantitées
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prix unitaire'
+		dataType: decimal
+		formatString: #,0.###############\ "€";-#,0.###############\ "€";#,0.###############\ "€"
+		lineageTag: 255c1458-b4fd-48f1-9421-3b6117935873
+		summarizeBy: sum
+		sourceColumn: Prix unitaire
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-FR"}
+
+	column 'Prix Total'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c61b728-2693-420a-a0d4-279619e11b52
+		summarizeBy: sum
+		sourceColumn: Prix Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status Commande'
+		dataType: string
+		lineageTag: e3fc0931-45fd-4515-a48e-719cf0803625
+		summarizeBy: none
+		sourceColumn: Status Commande
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales_2 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Utilisateur\Desktop\Power Bi DESTOP\POWERBI\POWER PROJET 2\Power-Projet-2\sales_2.csv"),[Delimiter=",", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"OrderID", type text}, {"CustomerID", type text}, {"CompanyName", type text}, {"ProductID", type text}, {"ProductName", type text}, {"Category", type text}, {"RegionID", type text}, {"RegionName", type text}, {"OrderDate", type date}, {"Quantity", Int64.Type}, {"UnitPrice", Currency.Type}, {"TotalPrice", Int64.Type}, {"OrderStatus", type text}}),
+				    #"Colonnes renommées" = Table.RenameColumns(#"Type modifié",{{"OrderID", "ID Commande"}, {"CustomerID", "ID Client"}, {"CompanyName", "Nom Client"}, {"ProductID", "ID Produit"}, {"ProductName", "Nom produit"}, {"Category", "Categorie"}, {"RegionID", "ID Region"}, {"RegionName", "Nom de la région"}, {"OrderDate", "Date de la Commnade"}, {"Quantity", "Quantitées"}, {"UnitPrice", "Prix unitaire"}, {"TotalPrice", "Prix Total"}, {"OrderStatus", "Status Commande"}})
+				in
+				    #"Colonnes renommées"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,101 @@
+table Ventes
+	lineageTag: 093c0f40-dea8-492b-bd39-04238de06042
+
+	column 'ID Commande'
+		dataType: string
+		lineageTag: 1f742932-e74f-4165-875c-2ae193782e8f
+		summarizeBy: none
+		sourceColumn: ID Commande
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID Client'
+		dataType: string
+		lineageTag: 95d4dea6-58bd-448a-9b0b-35c3a2fdaf92
+		summarizeBy: none
+		sourceColumn: ID Client
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID Produit'
+		dataType: string
+		lineageTag: 019a6a28-a602-490e-98b9-2199fe64b6f4
+		summarizeBy: none
+		sourceColumn: ID Produit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID Region'
+		dataType: string
+		lineageTag: 9b90d4d1-e406-44e7-be52-3f76706ad077
+		summarizeBy: none
+		sourceColumn: ID Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date de la Commnade'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 776453fd-e100-417d-9aa4-bdfa9af55bac
+		summarizeBy: none
+		sourceColumn: Date de la Commnade
+
+		variation Variation
+			isDefault
+			relationship: 09b50e41-85bf-4a78-9e84-16cf29ae3d34
+			defaultHierarchy: LocalDateTable_baba7545-a866-49b4-942d-43757b6bf542.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Quantitées
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d9daa9b-0d88-4904-a549-c18c37dab7dd
+		summarizeBy: sum
+		sourceColumn: Quantitées
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prix unitaire'
+		dataType: decimal
+		formatString: #,0.###############\ "€";-#,0.###############\ "€";#,0.###############\ "€"
+		lineageTag: f37206eb-e588-4c15-9313-4046cfb58e43
+		summarizeBy: sum
+		sourceColumn: Prix unitaire
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-FR"}
+
+	column 'Prix Total'
+		dataType: int64
+		formatString: 0
+		lineageTag: e81ae279-3e4c-4075-a6c0-bdfff9aa1c5a
+		summarizeBy: sum
+		sourceColumn: Prix Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status Commande'
+		dataType: string
+		lineageTag: 60af4c18-852c-4e90-9dbd-8230b5256bca
+		summarizeBy: none
+		sourceColumn: Status Commande
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ventes = m
+		mode: import
+		source =
+				let
+				    Source = sales_2,
+				    #"Colonnes supprimées" = Table.RemoveColumns(Source,{"Nom Client", "Nom produit", "Categorie", "Nom de la région"})
+				in
+				    #"Colonnes supprimées"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
