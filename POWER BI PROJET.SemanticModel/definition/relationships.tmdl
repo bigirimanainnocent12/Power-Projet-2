@@ -1,32 +1,15 @@
-relationship 29ea52b7-bb8c-42d2-9cfc-cf0d761a2461
-	joinOnDateBehavior: datePartOnly
-	fromColumn: sales_2.'Date de la Commnade'
-	toColumn: LocalDateTable_fff29c86-8ab7-4c9c-b678-aa6c11eb6417.Date
-
 relationship 09b50e41-85bf-4a78-9e84-16cf29ae3d34
 	joinOnDateBehavior: datePartOnly
 	fromColumn: Ventes.'Date de la Commnade'
 	toColumn: LocalDateTable_baba7545-a866-49b4-942d-43757b6bf542.Date
 
-relationship AutoDetected_00898c1b-f7de-4457-b114-8b252b7cd1c5
-	fromColumn: sales_2.'ID Client'
-	toColumn: Client.'ID Client'
-
 relationship AutoDetected_9b3bfaa6-0017-48cb-9928-f06ef8eec9ad
 	fromColumn: Ventes.'ID Client'
 	toColumn: Client.'ID Client'
 
-relationship AutoDetected_bf015294-854c-42bd-b3eb-125c1f0c94f1
-	fromColumn: sales_2.'ID Produit'
-	toColumn: Produit.'ID Produit'
-
 relationship AutoDetected_5fba3908-f947-4326-8144-2c992eaa7793
 	fromColumn: Ventes.'ID Produit'
 	toColumn: Produit.'ID Produit'
-
-relationship AutoDetected_26e64847-cdff-45eb-9d73-15103900a087
-	fromColumn: sales_2.'ID Region'
-	toColumn: Régions.'ID Region'
 
 relationship AutoDetected_fa62f1a2-19ae-4e40-b4ac-557d4b710709
 	fromColumn: Ventes.'ID Region'

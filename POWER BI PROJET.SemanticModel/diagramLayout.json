@@ -10,8 +10,8 @@
       "nodes": [
         {
           "location": {
-            "x": 49.999999999999993,
-            "y": 643.26758835044109
+            "x": 22.999999999999993,
+            "y": 288.86758682456218
           },
           "nodeIndex": "Client",
           "nodeLineageTag": "85b6984e-d4a5-4683-be94-6c37c8a610fb",
@@ -19,12 +19,12 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 4
         },
         {
           "location": {
-            "x": 618.3288921644629,
-            "y": 371.34907119808071
+            "x": 340.3288921644629,
+            "y": 350.14907424983852
           },
           "nodeIndex": "Produit",
           "nodeLineageTag": "3e05f046-bb0b-4bcf-b0b3-310a9fa09200",
@@ -32,12 +32,12 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
-            "x": 178.75524602731136,
-            "y": -50
+            "x": 271.75524602731139,
+            "y": 0
           },
           "nodeIndex": "Régions",
           "nodeLineageTag": "8fc93bb1-bba7-45e2-ba7b-7cb46c9060c1",
@@ -45,30 +45,30 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         },
         {
           "location": {
-            "x": 334.18782126827421,
-            "y": 442.92038251577026
-          },
-          "nodeIndex": "sales_2",
-          "nodeLineageTag": "653541ca-c22d-4e99-b09f-df10c2ae07d8",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 50.098537470481716,
-            "y": 128.136620922767
+            "x": 591.09853747048169,
+            "y": 82
           },
           "nodeIndex": "Ventes",
           "nodeLineageTag": "093c0f40-dea8-492b-bd39-04238de06042",
           "size": {
-            "height": 296,
+            "height": 324,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 852.09853747048169,
+            "y": 199.07453712491926
+          },
+          "nodeIndex": "Mesures",
+          "nodeLineageTag": "b252cd78-b125-496d-bcf3-37dfa559c31f",
+          "size": {
+            "height": 104,
             "width": 234
           },
           "zIndex": 0
