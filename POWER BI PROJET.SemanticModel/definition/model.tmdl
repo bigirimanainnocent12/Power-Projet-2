@@ -1,0 +1,27 @@
+model Model
+	culture: fr-FR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-FR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBIDesktopVersion = 2.143.1378.0 (25.05)+4e1de9c957866bc5336e0d250838314aa54ff3a8
+
+annotation PBI_QueryOrder = ["sales_2","Client","Produit","Régions","Ventes"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table sales_2
+ref table DateTableTemplate_9aa117a3-9bad-4962-b471-a36179e37860
+ref table LocalDateTable_fff29c86-8ab7-4c9c-b678-aa6c11eb6417
+ref table Client
+ref table Produit
+ref table Régions
+ref table Ventes
+ref table LocalDateTable_baba7545-a866-49b4-942d-43757b6bf542
+
+ref cultureInfo fr-FR
+
