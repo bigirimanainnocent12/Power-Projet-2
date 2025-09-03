@@ -1,14 +1,6 @@
 table Ventes
 	lineageTag: 093c0f40-dea8-492b-bd39-04238de06042
 
-	measure 'Total ventes' = SUM(Ventes[Prix Total])
-		formatString: #,0.000\ "€";-#,0.000\ "€";#,0.000\ "€"
-		lineageTag: 671846de-b29b-46a9-bbca-6bc58449a2a4
-
-	measure 'Nombre de commandes' = DISTINCTCOUNT(Ventes[ID Commande])
-		formatString: 0
-		lineageTag: ec384634-bf46-435a-9a80-4401e110e4c9
-
 	column 'ID Commande'
 		dataType: string
 		lineageTag: 1f742932-e74f-4165-875c-2ae193782e8f

@@ -1,16 +1,6 @@
 table Client
 	lineageTag: 85b6984e-d4a5-4683-be94-6c37c8a610fb
 
-	measure 'Quantité vendue' = SUM(Ventes[Quantitées])
-		formatString: 0
-		lineageTag: 2df5ef65-ef82-4e96-bf2c-670fea8e781f
-
-	measure 'Commande moyenne' = ```
-			DIVIDE(Ventes[Total ventes],Ventes[Nombre de commandes]) 
-			```
-		formatString: #,0\ "€";-#,0\ "€";#,0\ "€"
-		lineageTag: e2d0583f-2c92-4147-b8d8-f72ff8bdbe33
-
 	column 'ID Client'
 		dataType: string
 		lineageTag: 094d4dfa-03d6-4870-adb8-79eb7016a1f8
