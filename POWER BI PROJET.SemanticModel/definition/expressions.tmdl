@@ -3,9 +3,10 @@ expression sales_2 =
 		    Source = Csv.Document(File.Contents("C:\Users\Utilisateur\Desktop\Power Bi DESTOP\POWERBI\POWER PROJET 2\Power-Projet-2\sales_2.csv"),[Delimiter=",", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 		    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 		    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"OrderID", type text}, {"CustomerID", type text}, {"CompanyName", type text}, {"ProductID", type text}, {"ProductName", type text}, {"Category", type text}, {"RegionID", type text}, {"RegionName", type text}, {"OrderDate", type date}, {"Quantity", Int64.Type}, {"UnitPrice", Currency.Type}, {"TotalPrice", Int64.Type}, {"OrderStatus", type text}}),
-		    #"Colonnes renommées" = Table.RenameColumns(#"Type modifié",{{"OrderID", "ID Commande"}, {"CustomerID", "ID Client"}, {"CompanyName", "Nom Client"}, {"ProductID", "ID Produit"}, {"ProductName", "Nom produit"}, {"Category", "Categorie"}, {"RegionID", "ID Region"}, {"RegionName", "Nom de la région"}, {"OrderDate", "Date de la Commnade"}, {"Quantity", "Quantitées"}, {"UnitPrice", "Prix unitaire"}, {"TotalPrice", "Prix Total"}, {"OrderStatus", "Status Commande"}})
+		    #"Colonnes renommées" = Table.RenameColumns(#"Type modifié",{{"OrderID", "ID Commande"}, {"CustomerID", "ID Client"}, {"CompanyName", "Nom Client"}, {"ProductID", "ID Produit"}, {"ProductName", "Nom produit"}, {"Category", "Categorie"}, {"RegionID", "ID Region"}, {"RegionName", "Nom de la région"}, {"OrderDate", "Date de la Commnade"}, {"Quantity", "Quantitées"}, {"UnitPrice", "Prix unitaire"}, {"TotalPrice", "Prix Total"}, {"OrderStatus", "Status Commande"}}),
+		    #"Type modifié1" = Table.TransformColumnTypes(#"Colonnes renommées",{{"Date de la Commnade", type date}})
 		in
-		    #"Colonnes renommées"
+		    #"Type modifié1"
 	lineageTag: 7aeae548-3863-4a6c-826e-80aef4c479d2
 
 	annotation PBI_NavigationStepName = Navigation

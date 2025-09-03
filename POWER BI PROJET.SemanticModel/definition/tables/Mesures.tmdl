@@ -2,7 +2,7 @@ table Mesures
 	lineageTag: b252cd78-b125-496d-bcf3-37dfa559c31f
 
 	measure 'Commande moyenne' = ```
-			DIVIDE(Mesures[Total ventes],Mesures[Nombre de commandes]) 
+			DIVIDE(Mesures[Chiffre d'affaire],Mesures[Nombre de commandes]) 
 			```
 		formatString: #,0\ "€";-#,0\ "€";#,0\ "€"
 		lineageTag: e2d0583f-2c92-4147-b8d8-f72ff8bdbe33
@@ -15,9 +15,21 @@ table Mesures
 		formatString: 0
 		lineageTag: ec384634-bf46-435a-9a80-4401e110e4c9
 
-	measure 'Total ventes' = SUM(Ventes[Prix Total])
+	measure 'Chiffre d''affaire' = SUM(Ventes[Prix Total])
 		formatString: #,0.000\ "€";-#,0.000\ "€";#,0.000\ "€"
 		lineageTag: 671846de-b29b-46a9-bbca-6bc58449a2a4
+
+	measure 'Total Commandes annulées' = CALCULATE(DISTINCTCOUNT(Ventes[ID Commande]),Ventes[Status Commande]="Cancelled")
+		formatString: 0
+		lineageTag: a98cb99e-6a15-4dbc-9557-7775b11618f8
+
+	measure 'Montants Commandes annulée' = CALCULATE(SUM(Ventes[Prix Total]),Ventes[Status Commande]="Cancelled")
+		formatString: #,0\ "€";-#,0\ "€";#,0\ "€"
+		lineageTag: ab5d1a49-0fcf-4d01-983a-9052d7c0b1b6
+
+	measure 'Pourcentages des commandes annulées' = DIVIDE(Mesures[Total Commandes annulées],Mesures[Nombre de commandes])
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: a3a17b4c-82fa-4df4-8f33-2ba9b06227f6
 
 	partition Mesures = m
 		mode: import

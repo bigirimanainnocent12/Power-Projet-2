@@ -35,7 +35,7 @@ table Ventes
 
 	column 'Date de la Commnade'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: Short Date
 		lineageTag: 776453fd-e100-417d-9aa4-bdfa9af55bac
 		summarizeBy: none
 		sourceColumn: Date de la Commnade
@@ -91,9 +91,10 @@ table Ventes
 		source =
 				let
 				    Source = sales_2,
-				    #"Colonnes supprimées" = Table.RemoveColumns(Source,{"Nom Client", "Nom produit", "Categorie", "Nom de la région"})
+				    #"Colonnes supprimées" = Table.RemoveColumns(Source,{"Nom Client", "Nom produit", "Categorie", "Nom de la région"}),
+				    #"Type modifié" = Table.TransformColumnTypes(#"Colonnes supprimées",{{"Date de la Commnade", type date}})
 				in
-				    #"Colonnes supprimées"
+				    #"Type modifié"
 
 	annotation PBI_NavigationStepName = Navigation
 
